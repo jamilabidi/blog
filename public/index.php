@@ -1,6 +1,3 @@
-<?php
-echo("bienvenue sur le blog");
-?>
 
 
 <?php
@@ -14,7 +11,7 @@ if (!isset($_SESSION['dateFirstVisit'])) {
     $_SESSION['dateFirstVisit'] = date('Y-m-d-H-i-s');
 }
 
-
+include '../database/database.php';
 
 $input = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
 $routes = array(
@@ -36,3 +33,6 @@ else{
     include './public/404.php';
 
 }
+
+echo("bienvenue sur le blog");
+
