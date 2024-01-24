@@ -1,0 +1,36 @@
+
+
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+
+if (!isset($_SESSION['dateFirstVisit'])) {
+    $_SESSION['dateFirstVisit'] = date('Y-m-d-H-i-s');
+}
+
+include '../database/database.php';
+echo("bienvenue sur le blog");
+$input = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
+$routes = array(
+    '' => "index.php",
+    'test'=>"testBDD.php"
+);
+switch (array_key_exists($input,$routes)){
+case true :
+   #ob_start();
+    include $routes[$input];
+   #$render=ob_get_clean();
+   #echo $render;
+    break;
+
+default :
+    header("HTTP/1.1 404 Not Found");
+    include '404.php';
+
+}
+
+
+

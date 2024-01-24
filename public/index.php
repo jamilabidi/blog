@@ -1,38 +1,30 @@
-
-
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
-}
 
-
-if (!isset($_SESSION['dateFirstVisit'])) {
-    $_SESSION['dateFirstVisit'] = date('Y-m-d-H-i-s');
-}
-
-include '../database/database.php';
-
-$input = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
-$routes = array(
-    '' => "./public/cv.php",
-    'page'=>"./public/cv.php",
-    'cv' =>  './public/cv.php',
-    'hobby' => './public/hobby.php',
-    'contact' => './public/questionnaire.php',
-);
-
-if(array_key_exists($input,$routes)==true){
-    ob_start();
-    include $routes[$input];
-    $render=ob_get_clean();
-    echo $render;
-}
-else{
-    header("HTTP/1.1 404 Not Found");
-    include './public/404.php';
-
-}
+include '../config/database.php';
+include 'footer.php';
+include 'header.php';
 
 echo("bienvenue sur le blog");
+
+$routes = array(
+    'home' => "accueil.php",
+    'test' => "testBDD.php",
+    '404'=>"404.php"
+);
+//todo:     header("HTTP/1.1 404 Not Found");
+
+
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
+$action = $action ?? 'home';
+$action = isset($routes[$action]) ? $action : '404';
+$page = $routes[$action];
+include $page;
+
+
+
+
+
+
+
 
