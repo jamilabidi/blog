@@ -2,15 +2,15 @@
 
 
 include '../config/database.php';
-include 'footer.php';
+
 include 'header.php';
 
-echo("bienvenue sur le blog");
+echo("bienvenue sur le blog \n" );
 
 $routes = array(
-    'home' => "accueil.php",
+    'home' => '../app/controllers/homeController.php',
     'test' => "testBDD.php",
-    '404'=>"404.php"
+    '404'=> '404.php'
 );
 //todo:     header("HTTP/1.1 404 Not Found");
 
@@ -21,7 +21,7 @@ $action = isset($routes[$action]) ? $action : '404';
 $page = $routes[$action];
 include $page;
 
-
+include 'footer.php';
 
 
 

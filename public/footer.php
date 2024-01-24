@@ -3,7 +3,7 @@
     <nav>
         <ul>
             <li class="liStyleReset">
-                <a class="aStyleReset" href="hobby.php">Hobbies</a>
+                <a class="aStyleReset" href="index.php">ACCUEIL</a>
             </li>
         </ul>
     </nav>
