@@ -23,7 +23,9 @@ catch (Exception $e)
 $sqlQuery = 'SELECT * FROM Authors ;';
 $authorsStatement = $mysqlClient->prepare($sqlQuery);
 $authorsStatement->execute();
+
 $authors = $authorsStatement->fetchAll();
+var_dump($authors);
 #var_dump($authors);
 // On affiche chaque author un à un
 #print_r($authors[27]);

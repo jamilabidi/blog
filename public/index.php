@@ -2,7 +2,6 @@
 
 
 include '../config/database.php';
-
 include 'header.php';
 
 echo("bienvenue sur le blog \n" );
@@ -12,7 +11,7 @@ $routes = array(
     'test' => "testBDD.php",
     '404'=> '404.php'
 );
-//todo:     header("HTTP/1.1 404 Not Found");
+
 
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);
