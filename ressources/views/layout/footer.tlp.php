@@ -1,4 +1,5 @@
-<header>
+
+<footer>
     <nav>
         <ul>
             <li class="liStyleReset">
@@ -6,10 +7,6 @@
             </li>
         </ul>
     </nav>
-    <div>
-
-    </div>
-</header>
-<div>
-
-</div>
+</footer>
+</body>
+</html>

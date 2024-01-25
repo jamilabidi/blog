@@ -31,3 +31,4 @@ $metadata="";
     </script>
     <title><?=$title?></title>
 </head>
+<body>
