@@ -2,9 +2,9 @@
 
 
 include '../config/database.php';
-include 'header.php';
+#include 'header.php';
 
-echo("bienvenue sur le blog \n" );
+echo("bienvenue sur le blog \n la page d'index se charge" );
 
 $routes = array(
     'home' => '../app/controllers/homeController.php',
@@ -20,7 +20,7 @@ $action = isset($routes[$action]) ? $action : '404';
 $page = $routes[$action];
 include $page;
 
-include 'footer.php';
+#include 'footer.php';
 
 
 
