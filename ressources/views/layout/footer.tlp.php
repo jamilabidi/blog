@@ -2,7 +2,7 @@
     <nav>
         <ul>
             <li class="liStyleReset">
-                <a class="aStyleReset" href="../../../public/index.php">ACCUEIL</a>
+                <a class="aStyleReset" href="/">ACCUEIL</a>
             </li>
         </ul>
     </nav>
