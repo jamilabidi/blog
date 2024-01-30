@@ -14,3 +14,11 @@ function blogPostByld(PDO $mysqlClient, $idArticleRequested){
     $onePostRequested->execute(["id"=>$idArticleRequested]);
     return $onePostRequested->fetchAll();
 }
+function commentsByBlogPost(PDO $mysqlClient, $idArticleRequested){
+    $mySqlQuery="select comments.body,comments.date ,Authors.pseudo from comments INNER JOIN Authors ON Authors.id=comments.Authors_id where Articles_id =:id;";
+    $onePostRequested = $mysqlClient->prepare($mySqlQuery);
+    $onePostRequested->execute(["id"=>$idArticleRequested]);
+    return $onePostRequested->fetchAll();
+}
+
+
