@@ -6,7 +6,7 @@ include '../config/database.php';
 $routes = array(
     'home' => '../app/controllers/homeController.php',
     'test' => "testBDD.php",
-    'article' =>"../app/controllers/articleController.php",
+    'article' =>"../app/controllers/blogPostController.php",
     '404'=> '404.php'
 );
 
