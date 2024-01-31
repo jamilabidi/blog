@@ -13,11 +13,8 @@
     <label for="title">Titre</label>
     <input type="text" name="title" id="title"/><br>
 
-    <label for="pseudo">Titre</label>
+    <label for="pseudo">Pseudo</label>
     <input type="text" name="pseudo" id="pseudo"/><br>
-
-<!--    <label for="pseudo">pseudo</label>-->
-<!--    <input type="number"name="pseudo" id="pseudo"><br>-->
 
     <label for="body">texte</label>
     <textarea name="body" id="body"></textarea>
