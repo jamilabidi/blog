@@ -1,6 +1,6 @@
 
 <?php include '../ressources/views/layout/header.tlp.php' ?>
-
+<?="post update template se charge"?>
 <?php if ($postAsked== false): ?>
 <div xmlns="http://www.w3.org/1999/html"> pas de contenu à afficher </div>
 <?php else:?>
@@ -8,14 +8,10 @@
     <h2>ARTICLE:</h2>
     <?php foreach ($postAsked as $key => $value): ?>
         <h3> titre:    <?= $value['title']; ?></h3>
-        <form action="?action=blogPostModify&id=<?=$value['id']?>" method="POST">
-        <div>
-        <label for="body">texte</label>
-        <textarea name="body" id="body"><?= $value['body']; ?></textarea>
-        </div>
+        <div> contenu: <?= $value['body']; ?></div>
         <div> pseudo: <?= $value['pseudo']; ?></div>
 
-
+        <?php var_dump($value['id']); ?>
 <button >
     <a href="/?action=blogPostModify&id=<?=$value['id']?>"> Modifier l'article </a>
 </button>
