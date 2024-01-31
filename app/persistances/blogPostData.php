@@ -20,5 +20,12 @@ function commentsByBlogPost(PDO $mysqlClient, $idArticleRequested){
     $onePostRequested->execute(["id"=>$idArticleRequested]);
     return $onePostRequested->fetchAll();
 }
-
-
+function blogPostCreate(PDO $mysqlClient, $postSubmitted){
+    $mysqlQuery="INSERT INTO Articles (title,body,Authors_id) values(?, ?, (SELECT id FROM Authors WHERE pseudo= ?));";
+    $tempSubmitted = $mysqlClient->prepare($mysqlQuery);
+    $tempSubmitted->execute([$postSubmitted['title'],$postSubmitted['body'],$postSubmitted['pseudo']]);
+}
+function blogPostCreateTEST(PDO $mysqlClient){
+    $mysqlquery ="INSERT INTO Articles (title,body,Authors_id) values('test".date('Ymdis')."','bodytest".date('Ymdis')."',6);";
+    $mysqlClient->query($mysqlquery);
+}

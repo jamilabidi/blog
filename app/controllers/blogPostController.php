@@ -1,4 +1,4 @@
-<pre>
+
 <?php
 include'../app/persistances/blogPostData.php';
 $idArticleRequested = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_URL);
@@ -10,4 +10,3 @@ include '../ressources/views/blogPost.tlp.php';
 
 
 ?>
-</pre>

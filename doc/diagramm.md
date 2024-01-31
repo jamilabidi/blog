@@ -28,17 +28,35 @@ affichage d'un article
 ```mermaid
 sequenceDiagram
 User->>index.php: ?action=article&id=<?= $value['id']
-index.php->>articleController.php: include
-articleController.php->>oneBlogPost.php: oneArticleSelected()
-oneBlogPost.php->>PDO: prepare()
-PDO-->>oneBlogPost.php: PDOStatement
-oneBlogPost.php->>PDOStatement: execute()
-PDOStatement-->>oneBlogPost.php: isSuccess
-oneBlogPost.php->>PDOStatement: fetchAll()
-PDOStatement-->>oneBlogPost.php: article
-oneBlogPost.php-->>articleController.php: article
-articleController.php->>article.tpl.php: article
+index.php->>blogPostController.php: include
+blogPostController.php->>blogPostData.php: blogPostById()
+blogPostController.php->>blogPostData.php: commentsByBlogPost()
+blogPostData.php->>PDO: prepare()
+PDO-->>blogPostData.php: PDOStatement
+blogPostData.php->>PDOStatement: execute()
+PDOStatement-->>blogPostData.php: isSuccess
+blogPostData.php->>PDOStatement: fetchAll()
+PDOStatement-->>blogPostData.php: article
+blogPostData.php-->>blogPostController.php: article
+blogPostController.php->>article.tpl.php: article
 article.tpl.php-->>User: display blogPosts
+```
+
+soumission d'un article
+```mermaid
+sequenceDiagram
+User->>index.php: ?action=create
+index.php->>blogPostCreateController.php: include
+blogPostCreateController.php->>blogPostData.php: blogPostCreate()
+blogPostData.php->>PDO: prepare()
+PDO-->>blogPostData.php: PDOStatement
+blogPostData.php->>PDOStatement: execute()
+PDOStatement-->>blogPostData.php: isSuccess
+blogPostData.php->>PDOStatement: fetchAll()
+PDOStatement-->>blogPostData.php: article
+blogPostData.php-->>blogPostCreateController.php: article
+blogPostCreateController.php.php->>blogPostCreate.tpl.php: article
+blogPostCreate.tpl.php-->>User: display blogPosts
 ```
 
 
