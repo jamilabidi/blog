@@ -9,7 +9,8 @@ $routes = array(
     'article' =>"../app/controllers/blogPostController.php",
     'create'=>"../app/controllers/blogPostCreateController.php",
     '404'=> '404.php',
-    'blogPostModify' =>"../app/controllers/blogPostModifyController.php"
+    'blogPostModify' =>"../app/controllers/blogPostModifyController.php",
+    'blogPostDelete'=>"../app/controllers/blogpostDeleteController.php"
 );
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_URL);

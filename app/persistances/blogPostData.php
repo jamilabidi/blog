@@ -33,10 +33,23 @@ function blogPostUpdate(PDO $mysqlClient, $postSubmitted,$idArticleRequested){
     //    autre version de pdo
     //PDOStatement : $stmt = $mysqlClient->prepare($mysqlQuery);
     //$stmt->execute(["id" => (int)$idArticleRequested, "body" => (string)$postSubmitted['body']]);
-
 }
-//function blogPostUpdateTEST(PDO $mysqlClient,$postSubmitted,$idArticleRequested){
-//    $mysqlQuery="UPDATE Articles SET body='".$postSubmitted['body']."' WHERE id= ".$idArticleRequested;
-//    $mysqlClient->query($mysqlQuery);
-//////    echo $mysqlQuery;
-//}
+
+function deleteCommentFromOnePost(PDO $mysqlClient, $idArticleRequested){
+    $mySqlQuery="DELETE FROM `comments` WHERE Articles_id =:id;";
+    $onePostRequested = $mysqlClient->prepare($mySqlQuery);
+    $onePostRequested->execute(["id"=>$idArticleRequested]);
+    echo'commentaires associés delete';
+}
+function deleteArticlesHasCategoriesFromOnePost(PDO $mysqlClient, $idArticleRequested){
+    $mySqlQuery="DELETE FROM `Articles_has_categories`WHERE Articles_id =:id;";
+    $onePostRequested = $mysqlClient->prepare($mySqlQuery);
+    $onePostRequested->execute(["id"=>$idArticleRequested]);
+    echo'Articles_has_categories associés delete';
+}
+function deleteArticle(PDO $mysqlClient, $idArticleRequested){
+    $mySqlQuery="DELETE FROM `Articles`WHERE id =:id;";
+    $onePostRequested = $mysqlClient->prepare($mySqlQuery);
+    $onePostRequested->execute(["id"=>$idArticleRequested]);
+    echo'Articles delete';
+}

@@ -15,10 +15,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 
     );
     $postSubmitted=filter_input_array(INPUT_POST,$args);
-    //if($postSubmitted['pseudo']==''){$postSubmitted['pseudo']='anonyme';}
-    $postSubmitted['pseudo']= ('' == $postSubmitted['pseudo']) ? 'anonyme':$postSubmitted['pseudo'] ;
-    var_dump($_POST);
-    var_dump($postSubmitted);
+     $postSubmitted['pseudo']= ('' == $postSubmitted['pseudo']) ? 'anonyme':$postSubmitted['pseudo'] ;
+
     blogPostCreate($mysqlClient,$postSubmitted);
 
 }
