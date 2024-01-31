@@ -7,5 +7,5 @@ echo $idArticleRequested;
 deleteCommentFromOnePost($mysqlClient, $idArticleRequested);
 deleteArticlesHasCategoriesFromOnePost($mysqlClient, $idArticleRequested);
 deleteArticle($mysqlClient, $idArticleRequested);
-include '../ressources/views/blogPost.tlp.php';
-
+//include '../ressources/views/blogPost.tlp.php';
+header("Location: http://blog.local/");
