@@ -1,9 +1,8 @@
 <?php
 echo 'blog controller';
 include'../app/persistances/blogPostData.php';
-
-
 include '../ressources/views/blogPostCreate.tpl.php';
+
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     $args= array (
             'title'=> FILTER_SANITIZE_SPECIAL_CHARS,

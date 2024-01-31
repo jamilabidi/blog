@@ -37,8 +37,8 @@ blogPostData.php->>PDOStatement: execute()
 PDOStatement-->>blogPostData.php: isSuccess
 blogPostData.php->>PDOStatement: fetchAll()
 PDOStatement-->>blogPostData.php: article
-blogPostData.php-->>blogPostController.php: article
-blogPostController.php->>article.tpl.php: article
+blogPostData.php-->>blogPostController.php: article selected
+blogPostController.php->>article.tpl.php: article selected
 article.tpl.php-->>User: display blogPosts
 ```
 
@@ -52,11 +52,26 @@ blogPostData.php->>PDO: prepare()
 PDO-->>blogPostData.php: PDOStatement
 blogPostData.php->>PDOStatement: execute()
 PDOStatement-->>blogPostData.php: isSuccess
-blogPostData.php->>PDOStatement: fetchAll()
+blogPostData.php->>PDOStatement: execute()
 PDOStatement-->>blogPostData.php: article
-blogPostData.php-->>blogPostCreateController.php: article
-blogPostCreateController.php.php->>blogPostCreate.tpl.php: article
+blogPostData.php-->>blogPostCreateController.php: article submitted
+blogPostCreateController.php->>blogPostCreate.tpl.php: article submitted
 blogPostCreate.tpl.php-->>User: display blogPosts
 ```
 
-
+edition d'un article
+```mermaid
+sequenceDiagram
+User->>index.php: ?action=blogPostModify&id=2
+index.php->>blogPostModifyController.php: include
+blogPostModifyController.php->>blogPostData.php: blogPostUpdate()
+blogPostData.php->>PDO: prepare()
+PDO-->>blogPostData.php: PDOStatement
+blogPostData.php->>PDOStatement: execute()
+PDOStatement-->>blogPostData.php: isSuccess
+blogPostData.php->>PDOStatement: execute()
+PDOStatement-->>blogPostData.php: article
+blogPostData.php-->>blogPostModifyController.php: article updated
+blogPostModifyController.php->>blogPostUpdate.tpl.php: article updated
+blogPostUpdate.tpl.php-->>User: display blogPostsUpdate
+```
