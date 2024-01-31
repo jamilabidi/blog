@@ -1,6 +1,6 @@
 
 <?php include '../ressources/views/layout/header.tlp.php' ?>
-<?="post update template se charge"?>
+
 <?php if ($postAsked== false): ?>
     <div xmlns="http://www.w3.org/1999/html"> pas de contenu à afficher </div>
 <?php else:?>
