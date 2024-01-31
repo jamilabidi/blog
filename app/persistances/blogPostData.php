@@ -25,7 +25,18 @@ function blogPostCreate(PDO $mysqlClient, $postSubmitted){
     $tempSubmitted = $mysqlClient->prepare($mysqlQuery);
     $tempSubmitted->execute([$postSubmitted['title'],$postSubmitted['body'],$postSubmitted['pseudo'],$postSubmitted['startDate'],$postSubmitted['endDate'],$postSubmitted['importance_level']]);
 }
-function blogPostCreateTEST(PDO $mysqlClient){
-    $mysqlquery ="INSERT INTO Articles (title,body,Authors_id) values('test".date('Ymdis')."','bodytest".date('Ymdis')."',6);";
-    $mysqlClient->query($mysqlquery);
+
+function blogPostUpdate(PDO $mysqlClient, $postSubmitted,$idArticleRequested){
+    $mysqlQuery="UPDATE Articles SET body= :body WHERE id= :id;";
+    $tempSubmitted = $mysqlClient->prepare($mysqlQuery);
+    $tempSubmitted->execute(["id" =>(int) $idArticleRequested, "body" =>(string) $postSubmitted['body']]);
+    //    autre version de pdo
+    //PDOStatement : $stmt = $mysqlClient->prepare($mysqlQuery);
+    //$stmt->execute(["id" => (int)$idArticleRequested, "body" => (string)$postSubmitted['body']]);
+
 }
+//function blogPostUpdateTEST(PDO $mysqlClient,$postSubmitted,$idArticleRequested){
+//    $mysqlQuery="UPDATE Articles SET body='".$postSubmitted['body']."' WHERE id= ".$idArticleRequested;
+//    $mysqlClient->query($mysqlQuery);
+//////    echo $mysqlQuery;
+//}
